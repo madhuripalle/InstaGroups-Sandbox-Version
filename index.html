@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>InstaGroup - A Grouping Application for Instagram</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+</head>
+
+<body onload="startingFunc();">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="#">InstaGroup</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li>
+                        <a href="#search">Search</a>
+                    </li>
+                    <li>
+                        <a href="#groups">Manage Groups</a>
+                    </li>
+                    <li>
+                        <a href="#help">Need Help?</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Header -->
+    <!--  <a name="about"></a> -->
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <div class="transbox">
+                            <h1 style="color: black"><b>InstaGroup</b></h1>
+                            <h3 style="color: black"><b>A Grouping Application for Instagram</b></h3>
+                            <hr class="intro-divider">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+
+    <a  name="about"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">About This Application<br>There's so much you can do!</h2>
+                    <p class="lead">Tired of searching for individual users on Instagram? Use this application to create groups for your favorite users and search the newsfeed for them all at once!</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="img/aboutus.jpg" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="content-section-b">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Let's get started!</h2>
+                    <p class="lead">Use the <b><i>"Search"</i></b> tab on the navbar to start searching for users or media, the <b><i>"Manage Groups"</i></b> tab to play around with groups you've created, and the <b><i>"Need Help"</i></b> tab in case you get stuck!</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="img/get-started.jpg" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    
+    <!--Search -->
+
+    <a  name="search"></a>
+
+    <div id="ShowOldGroups" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Choose from your existing groups!</h4>
+                </div>
+                <div class="modal-body" style="max-height: 300px; overflow-y: auto">
+                    <table id="grouptable">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>  
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addUsersInGroup(false); clearinput();">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ShowOldGroupsMedia" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Choose from your existing groups!</h4>
+                </div>
+                <div class="modal-body" style="max-height: 300px; overflow-y: auto">
+                    <table id="grouptablemedia">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>  
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addUsersInGroup(true); clearinput();">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="CreateNewGroup" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create a New Group!</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" placeholder="Group Name" id="newgroupname" aria-describedby="basic-addon1">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="CreateNewGroup(false); clearinput();">Save Changes</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="CreateNewGroupMedia" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create a New Group!</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" placeholder="Group Name" id="newgroupnamemedia" aria-describedby="basic-addon1">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="CreateNewGroup(true); clearinput();">Save Changes</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row headingrow" style="padding-top: 5%">
+
+                <div class="col-md-9">
+
+                    <div class="alert alert-danger fade in row headingrow" id="alertboxdanger">
+                        <a href="#search" class="close" aria-label="close" onclick="$('.alert-danger').hide()">&times;</a>
+                        <strong>Error!</strong> <div id="alertdangertext"></div>
+                    </div>
+
+                    <div class="alert alert-success fade in row headingrow" id="alertboxsuccess">
+                        <a href="#search" class="close" aria-label="close" onclick="$('.alert-success').hide()">&times;</a>
+                        <strong>Success!</strong> <div id="alertsuccesstext"></div>
+                    </div>
+
+                    <div class="alert alert-info fade in row headingrow" id="alertboxinfo">
+                        <a href="#search" class="close" aria-label="close" onclick="$('.alert-info').hide()">&times;</a>
+                        <strong>Sorry!</strong><div id="alertinfotext"></div>
+                    </div>
+
+                    <div class="row headingrow" style="text-align: center" id="ShowWelcomeText">
+                        <h2><i>Let's get started!</i></h2>
+                        <h3><i>Start searching for users or media using the filters to your right..</i></h3>
+                    </div>
+
+                    <div class="row headingrow" id="ShowMediaResults">
+
+                        <div class="row headingrow"  style="padding-right: 8.33%; padding-bottom: 8%">
+                            <!--for add to group button-->
+                            <div class="btn-group pull-right" role="group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="groupbutton">
+                                    Add User(s) to Group
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a data-toggle="modal" onclick="ShowGroups(true, false);">Choose Existing Group</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a data-toggle="modal" data-target="#CreateNewGroupMedia">Create New Group</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="row headingrow">
+
+                            <div class="col-md-5 embedm" id="embedm1">
+                                <div class="mediaframe">
+                                    <div class="row userinfo" style="padding-bottom: 1%">
+                                        <!--user name, picture thumbnail, add user to group button goes here-->
+                                        <div class="col-md-2">
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value="" id="mediacheck1"></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-2">
+                                            <img id="mediauserpic1" class="img-circle imgcircle" src="" style="width:100%"/>
+                                            <!--user profile picture-->
+                                        </div>
+                                        <div class="col-md-3 usernametext" id="mediausername1" style="padding-left: 0px">
+                                            <!--username-->
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+                                        <img  id="mediapic1" class="mediapic" src=""/>
+                                        <!--image goes here -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-7" id="mediatime1">
+                                            <!--text goes here--> 
+                                        </div>
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-1" style="align: right">
+                                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="col-md-1" id="medialikes1" style="padding-left: 0px"></div>
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                    </div>
+                                    <div class="row mediacaption" id="mediacaption1">
+                                    </div>
+                                    <div class="row mediacaption" id="mediatags1">
+                                    </div>
+                                    <div class="row mediacaption">
+                                        <a id="medialink1" href="">View on Instagram!</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <!--Empty div for formatting-->
+                            </div>
+
+                            <div class="col-md-5 embedm" id="embedm2">
+                                <div class="mediaframe">
+                                    <div class="row userinfo" style="padding-bottom: 1%">
+                                        <!--user name, picture thumbnail, add user to group button goes here-->
+                                        <div class="col-md-2">
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value="" id="mediacheck2"></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-2">
+                                            <img id="mediauserpic2" class="img-circle imgcircle" src="" style="width:100%"/>
+                                            <!--user profile picture-->
+                                        </div>
+                                        <div class="col-md-3 usernametext" id="mediausername2" style="padding-left: 0px">
+                                            <!--username-->
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+                                        <img  id="mediapic2" class="mediapic" src=""/>
+                                        <!--image goes here -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-7" id="mediatime2">
+                                            <!--text goes here--> 
+                                        </div>
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-1" style="align: right">
+                                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="col-md-1" id="medialikes2" style="padding-left: 0px"></div>
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                    </div>
+                                    <div class="row mediacaption" id="mediacaption2">
+                                    </div>
+                                    <div class="row mediacaption" id="mediatags2">
+                                    </div>
+                                    <div class="row mediacaption">
+                                        <a id="medialink2" href="">View on Instagram!</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <!--Empty div for formatting-->
+                            </div>
+
+                        </div>
+
+                        <hr> 
+
+                        <div class="row headingrow">
+
+                            <div class="col-md-5 embedm" id="embedm3">
+                                <div class="mediaframe">
+                                    <div class="row userinfo" style="padding-bottom: 1%">
+                                        <!--user name, picture thumbnail, add user to group button goes here-->
+                                        <div class="col-md-2">
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value="" id="mediacheck3"></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-2">
+                                            <img id="mediauserpic3" class="img-circle imgcircle" src="" style="width:100%"/>
+                                            <!--user profile picture-->
+                                        </div>
+                                        <div class="col-md-3 usernametext" id="mediausername3" style="padding-left: 0px">
+                                            <!--username-->
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+                                        <img  id="mediapic3" class="mediapic" src=""/>
+                                        <!--image goes here -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-7" id="mediatime3">
+                                            <!--text goes here--> 
+                                        </div>
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-1" style="align: right">
+                                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="col-md-1" id="medialikes3" style="padding-left: 0px"></div>
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                    </div>
+                                    <div class="row mediacaption" id="mediacaption3">
+                                    </div>
+                                    <div class="row mediacaption" id="mediatags3">
+                                    </div>
+                                    <div class="row mediacaption">
+                                        <a id="medialink3" href="">View on Instagram!</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <!--Empty div for formatting-->
+                            </div>
+
+                            <div class="col-md-5 embedm" id="embedm4">
+                                <div class="mediaframe">
+                                    <div class="row userinfo" style="padding-bottom: 1%">
+                                        <!--user name, picture thumbnail, add user to group button goes here-->
+                                        <div class="col-md-2">
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value="" id="mediacheck4"></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-2">
+                                            <img id="mediauserpic4" class="img-circle imgcircle" src="" style="width:100%"/>
+                                            <!--user profile picture-->
+                                        </div>
+                                        <div class="col-md-3 usernametext" id="mediausername4" style="padding-left: 0px">
+                                            <!--username-->
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+                                        <img  id="mediapic4" class="mediapic" src=""/>
+                                        <!--image goes here -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-7" id="mediatime4">
+                                            <!--text goes here--> 
+                                        </div>
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-1" style="align: right">
+                                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="col-md-1" id="medialikes4" style="padding-left: 0px"></div>
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                    </div>
+                                    <div class="row mediacaption" id="mediacaption4">
+                                    </div>
+                                    <div class="row mediacaption" id="mediatags4">
+                                    </div>
+                                    <div class="row mediacaption">
+                                        <a id="medialink4" href="">View on Instagram!</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <!--Empty div for formatting-->
+                            </div>
+
+                        </div>
+
+                        <hr> 
+
+                        <div class="row headingrow">
+
+                            <div class="col-md-5 embedm" id="embedm5">
+                                <div class="mediaframe">
+                                    <div class="row userinfo" style="padding-bottom: 1%">
+                                        <!--user name, picture thumbnail, add user to group button goes here-->
+                                        <div class="col-md-2">
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value="" id="mediacheck5"></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-2">
+                                            <img id="mediauserpic5" class="img-circle imgcircle" src="" style="width:100%"/>
+                                            <!--user profile picture-->
+                                        </div>
+                                        <div class="col-md-3 usernametext" id="mediausername5" style="padding-left: 0px">
+                                            <!--username-->
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+                                        <img  id="mediapic5" class="mediapic" src=""/>
+                                        <!--image goes here -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-7" id="mediatime5">
+                                            <!--text goes here--> 
+                                        </div>
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-1" style="align: right">
+                                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="col-md-1" id="medialikes5" style="padding-left: 0px"></div>
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                    </div>
+                                    <div class="row mediacaption" id="mediacaption5">
+                                    </div>
+                                    <div class="row mediacaption" id="mediatags5">
+                                    </div>
+                                    <div class="row mediacaption">
+                                        <a id="medialink5" href="">View on Instagram!</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <!--Empty div for formatting-->
+                            </div>
+
+                            <div class="col-md-5 embedm" id="embedm6">
+                                <div class="mediaframe">
+                                    <div class="row userinfo" style="padding-bottom: 1%">
+                                        <!--user name, picture thumbnail, add user to group button goes here-->
+                                        <div class="col-md-2">
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value="" id="mediacheck6"></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-2">
+                                            <img id="mediauserpic6" class="img-circle imgcircle" src="" style="width:100%"/>
+                                            <!--user profile picture-->
+                                        </div>
+                                        <div class="col-md-3 usernametext" id="mediausername6" style="padding-left: 0px">
+                                            <!--username-->
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+                                        <img  id="mediapic6" class="mediapic" src=""/>
+                                        <!--image goes here -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-7" id="mediatime6">
+                                            <!--text goes here--> 
+                                        </div>
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                        <div class="col-md-1" style="align: right">
+                                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="col-md-1" id="medialikes6" style="padding-left: 0px"></div>
+                                        <div class="col-md-1">
+                                            <!--empty div for formatting-->
+                                        </div>
+                                    </div>
+                                    <div class="row mediacaption" id="mediacaption6">
+                                    </div>
+                                    <div class="row mediacaption" id="mediatags6">
+                                    </div>
+                                    <div class="row mediacaption">
+                                        <a id="medialink6" href="">View on Instagram!</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <!--Empty div for formatting-->
+                            </div>
+
+                        </div>
+
+                        <hr> 
+
+
+                        <div class="row headingrow">
+
+                            <div class="col-md-2">
+                                <!--empty div for formatting-->
+                            </div>
+
+                            <div class="col-md-7">
+                                <nav>
+                                    <ul class="pager">
+                                        <li class="previous" id="prev"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                                        <li class="next" id="next"><a href="#"> Next <span aria-hidden="true">&rarr;</span></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+
+                            <div class="col-md-3">
+                                <!--empty div for formatting-->
+                            </div>
+
+                        </div> <!--last heading row-->
+
+                    </div> <!--Show Media Results -->
+
+                    <div class="row" id="ShowUserResults">
+
+                        <div class="row headingrow"  style="padding-right: 8.33%; padding-bottom: 8%">
+                            <!--for add to group button-->
+                            <div class="btn-group pull-right" role="group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="groupbutton">
+                                    Add User(s) to Group
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a data-toggle="modal" onclick="ShowGroups(false, false);">Choose Existing Group</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a data-toggle="modal" data-target="#CreateNewGroup">Create New Group</a></li>
+                                <!--    <li><button type="button" data-toggle="modal" data-target="#CreateNewGroup">
+                                    Launch demo modal
+                                </button></li> -->
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="row headingrow">
+
+                        <div class="col-md-5 embedm" id="embedu1">
+                            <div class="userframe">
+                                <div class="row userinfo" style="padding-bottom: 1%">
+                                    <!--user name, picture thumbnail, add user to group button goes here-->
+                                    <div class="col-md-2">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="" id="usercheck1"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <!--empty div for formatting-->
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <img  id="userpic1" class="mediapic" src=""/>
+                                    <!--image goes here -->
+                                </div>
+
+                                <div class="row mediacaption" id="userbio1">
+                                </div>
+
+                                <div class="row mediacaption" id="username1">
+                                </div>
+
+                                <div class="row mediacaption" id="userfullname1">
+                                </div>
+
+                                <div class="row mediacaption">
+                                    <p><input type="button" class="btn btn-default" href="#" value="View Recent Media" id="ViewRecentButton" onclick="ViewRecent('1');"/></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-1">
+                            <!--Empty div for formatting-->
+                        </div>
+
+                        <div class="col-md-5 embedm" id="embedu2">
+                            <div class="userframe">
+                                <div class="row userinfo" style="padding-bottom: 1%">
+                                    <!--user name, picture thumbnail, add user to group button goes here-->
+                                    <div class="col-md-2">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="" id="usercheck2"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <!--empty div for formatting-->
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <img  id="userpic2" class="mediapic" src=""/>
+                                    <!--image goes here -->
+                                </div>
+
+                                <div class="row mediacaption" id="userbio2">
+                                </div>
+
+                                <div class="row mediacaption" id="username2">
+                                </div>
+
+                                <div class="row mediacaption" id="userfullname2">
+                                </div>
+
+                                <div class="row mediacaption">
+                                    <p><input type="button" class="btn btn-default" href="#" value="View Recent Media" id="ViewRecentButton" onclick="ViewRecent('2');"/></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-1">
+                            <!--Empty div for formatting-->
+                        </div>
+
+                    </div>
+
+                    <hr> 
+
+                    <div class="row headingrow">
+
+                        <div class="col-md-5 embedm" id="embedu3">
+                            <div class="userframe">
+                                <div class="row userinfo" style="padding-bottom: 1%">
+                                    <!--user name, picture thumbnail, add user to group button goes here-->
+                                    <div class="col-md-2">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="" id="usercheck3"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <!--empty div for formatting-->
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <img  id="userpic3" class="mediapic" src=""/>
+                                    <!--image goes here -->
+                                </div>
+
+                                <div class="row mediacaption" id="userbio3">
+                                </div>
+
+                                <div class="row mediacaption" id="username3">
+                                </div>
+
+                                <div class="row mediacaption" id="userfullname3">
+                                </div>
+
+                                <div class="row mediacaption">
+                                    <p><input type="button" class="btn btn-default" href="#" value="View Recent Media" id="ViewRecentButton" onclick="ViewRecent('3');"/></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-1">
+                            <!--Empty div for formatting-->
+                        </div>
+
+                        <div class="col-md-5 embedm" id="embedu4">
+                            <div class="userframe">
+                                <div class="row userinfo" style="padding-bottom: 1%">
+                                    <!--user name, picture thumbnail, add user to group button goes here-->
+                                    <div class="col-md-2">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="" id="usercheck4"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <!--empty div for formatting-->
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <img  id="userpic4" class="mediapic" src=""/>
+                                    <!--image goes here -->
+                                </div>
+
+                                <div class="row mediacaption" id="userbio4">
+                                </div>
+
+                                <div class="row mediacaption" id="username4">
+                                </div>
+
+                                <div class="row mediacaption" id="userfullname4">
+                                </div>
+
+                                <div class="row mediacaption">
+                                    <p><input type="button" class="btn btn-default" href="#" value="View Recent Media" id="ViewRecentButton" onclick="ViewRecent('4');"/></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-1">
+                            <!--Empty div for formatting-->
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="row headingrow">
+
+                        <div class="col-md-5 embedm" id="embedu5">
+                            <div class="userframe">
+                                <div class="row userinfo" style="padding-bottom: 1%">
+                                    <!--user name, picture thumbnail, add user to group button goes here-->
+                                    <div class="col-md-2">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="" id="usercheck5"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <!--empty div for formatting-->
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <img  id="userpic5" class="mediapic" src=""/>
+                                    <!--image goes here -->
+                                </div>
+
+                                <div class="row mediacaption" id="userbio5">
+                                </div>
+
+                                <div class="row mediacaption" id="username5">
+                                </div>
+
+                                <div class="row mediacaption" id="userfullname5">
+                                </div>
+
+                                <div class="row mediacaption">
+                                    <p><input type="button" class="btn btn-default" href="#" value="View Recent Media" id="ViewRecentButton" onclick="ViewRecent('5');"/></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-1">
+                            <!--Empty div for formatting-->
+                        </div>
+
+                        <div class="col-md-5 embedm" id="embedu6">
+                            <div class="userframe">
+                                <div class="row userinfo" style="padding-bottom: 1%">
+                                    <!--user name, picture thumbnail, add user to group button goes here-->
+                                    <div class="col-md-2">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="" id="usercheck6"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <!--empty div for formatting-->
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <img  id="userpic6" class="mediapic" src=""/>
+                                    <!--image goes here -->
+                                </div>
+
+                                <div class="row mediacaption" id="userbio6">
+                                </div>
+
+                                <div class="row mediacaption" id="username6">
+                                </div>
+
+                                <div class="row mediacaption" id="userfullname6">
+                                </div>
+
+                                <div class="row mediacaption">
+                                    <p><input type="button" class="btn btn-default" href="#" value="View Recent Media" id="ViewRecentButton" onclick="ViewRecent('6');"/></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-1">
+                            <!--Empty div for formatting-->
+                        </div>
+
+                    </div>
+
+                    <hr> 
+
+                    <div class="row headingrow">
+
+                        <div class="col-md-2">
+                            <!--empty div for formatting-->
+                        </div>
+
+                        <div class="col-md-7">
+                            <nav>
+                                <ul class="pager">
+                                    <li class="previous" id="prev"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                                    <li class="next" id="next"><a href="#"> Next <span aria-hidden="true">&rarr;</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <div class="col-md-3">
+                            <!--empty div for formatting-->
+                        </div>
+
+                    </div>
+
+
+                </div> <!--Show User Results -->
+
+            </div> <!--col-md-9-->
+
+            <div style="padding-bottom: 50%">
+            <div class="col-md-3 sidebar-offcanvas" id="sidebar">
+                <h4>User Options</h4>
+
+                <div class="searchsomething" style="z-index:1">
+                    <table>
+                        <tr>
+                            <td><div class="radio">
+                                <label><input type="radio" name="optradio" id="radiouser" value="random"></label>
+                            </div></td>
+
+                            <td><div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                                <input type="text" class="form-control" placeholder="Username" id="userinput" aria-describedby="basic-addon1">
+                            </div></td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div id="mediaOptions">
+
+                    <h4><b>Media Options</b></h4>
+
+                    <div class="searchsomething" style="z-index:2">
+
+                        <table>
+                            <tr>
+                                <td><div class="radio">
+                                    <label><input type="radio" id="radiotag" name="optradio"></label>
+                                </div></td>
+
+                                <td><div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                                    <input type="text" class="form-control" placeholder="Tag" id="taginput" aria-describedby="basic-addon1">
+                                </div></td>
+
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div class="searchsomething" style="z-index:3">
+
+                        <table>
+                            <tr>
+                                <td><div class="radio">
+                                    <label><input type="radio" id="radiolocation" name="optradio"></label>
+                                </div></td>
+
+                                <td><div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                                    <input type="text" class="form-control" placeholder="Location" id="locationinput" aria-describedby="basic-addon1">
+                                </div></td>
+
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div class="searchsomething" style="z-index:4">
+                    <p><input type="button" class="btn btn-default" href="#" value="Search" id="SearchButton" onclick="changeSearch(); clearfields();"/></p>
+                </div>
+
+            </div> <!--col-md-3 search box -->
+            </div>
+
+        </div><!--/row-->
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.content-section-b -->
+
+
+<!--Manage Groups -->
+
+<a  name="groups"></a>
+
+<div id="CreateNewGroupMG" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create a New Group!</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" placeholder="Group Name" id="newgroupnameM" aria-describedby="basic-addon1">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="CreateManagedGroup(); startingFunc(); clearinput2();">Save Changes</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="ShowOldGroupsMG" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Choose from your existing groups!</h4>
+            </div>
+            <div class="modal-body" style="max-height: 300px; overflow-y: auto">
+                <table id="grouptablemg">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="deleteGroupFromModal(); clearinput();">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section-b">
+
+    <div class="container">
+
+        <div class="row" style="padding-top: 5%">
+
+            <div class="alert alert-danger fade in" id="alertboxdangerMG">
+                <a href="#groups" class="close" aria-label="close" onclick="$('.alert-danger').hide()">&times;</a>
+                <strong>Error!</strong> <div id="alertdangertextMG"></div>
+            </div>
+
+            <div class="alert alert-success fade in" id="alertboxsuccessMG">
+                <a href="#groups" class="close" aria-label="close" onclick="$('.alert-success').hide()">&times;</a>
+                <strong>Success!</strong> <div id="alertsuccesstextMG"></div>
+            </div>
+
+            <div class="alert alert-info fade in" id="alertboxinfoMG">
+                <a href="#groups" class="close" aria-label="close" onclick="$('.alert-info').hide()">&times;</a>
+                <strong>Sorry!</strong><div id="alertinfotextMG"></div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <!--for group options-->
+            <div class="btn-group pull-right" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="groupbutton">
+                    Group Options
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a data-toggle="modal" data-target="#CreateNewGroupMG">Create Group</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a data-toggle="modal" onclick="ShowGroups(true, true);">Delete Group</a></li>
+                </ul>
+            </div>
+
+            <!--for member options-->
+
+        </div>
+
+
+        <div class="row" id="GroupsWelcomeText">
+
+            <div style="text-align: center">
+                <h2><i>Let's get started!</i></h2>
+                <h3><i>Create groups using the "Create Group" button, or head over to the Search tab to find interesting users!</i></h3>
+            </div>
+
+        </div>
+
+        <div class="row" id="GroupResults">
+        </div>
+
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.content-section-b -->
+
+
+<a  name="help"></a>
+<div class="content-section-b">
+
+    <div class="container">
+
+        <div class="row headingrow">
+            <h1 class="mediacaption">Help and Documentation</h1>
+        </div>
+
+    </div>
+</div>
+
+<div class="content-section-a">
+    <div class="container">
+
+        <div class="row">
+            
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <h2 class="section-heading" style="color: #9E578D">Search Functionality</h2>
+            <p class="lead"> What you can do:</p><br>
+            <ol>
+                <li><p class="lead"><b>Search for users via their username</b></p></li>
+                <li><p class="lead"><b>Search for media using tags</b>, for example: love, nyc, etc.<br> Note that while searching, you mustn't use the # symbol, just the tag is sufficient</p></li>
+                <li><p class="lead"><b>Search for media using an address or a location</b></p></li>
+            </ol>
+
+            <p class="lead"><br>On searching, you will see results pop up to your left. These results are accompanied by checkboxes. Use the checkboxes to select a result.</p>
+
+            <p class="lead"><br>On selecting a result, you have the option to some easy access functions, such as add user to group. You can add the user to an already existing group or a new group, both for which a form will appear asking for further details. </p>
+
+            <p class="lead"><br>If you're thrown an error, make sure to read it carefull and double-check that you have selected all the input methods required (for example, checkboxes on the result boxes, radio boxes for choosing an existing group, or even the radio buttons while searching for particular users/media)!</p>
+
+            <p class="lead"><br>You also have the option to view a user's recent media and view a media's link on instagram, so feel free to do so. These options appear once you have search results present on your screen, within the individual result itself.<br></p>              
+
+        </div>
+    </div>
+</div>
+
+<div class="content-section-b">
+    <div class="container">
+
+        <div class="row">
+            
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <h2 class="section-heading" style="color: #9E578D">Manage Groups</h2>
+            <p class="lead"> What you can do:</p><br>
+            <ol>
+                <li><p class="lead"><b>Create a new group</b></p></li>
+                <li><p class="lead"><b>Delete an existing group</b></p></li>
+                <li><p class="lead"><b>Delete a specific member from an existing group</b></p></li>
+            </ol>
+
+            <p class="lead"><br>In order to create a group, simply press the <i>Create Group</i> option from "Group Options". You have the option to give your group a customized name, else a name will be assigned to it for you.</p>
+
+            <p class="lead"><br>To delete a group, you must have existing groups present on your interface. If you do so, select the group using the checkbox associated with it, go to group options, and press "Delete Group". All members associated with this group will automatically be deleted.</p>
+
+            <p class="lead"><br>To delete a specific member of the group, press the delete option under the image of the member.</p>
+
+            <p class="lead"><br>Remember that the groups are refreshed everytime you add/delete one of them, or even everytime you search, so everything is always up to date!</p>           
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#search">Search</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#groups">Manage Groups</a>
+                    </li>
+                    <li>
+                        <a href="#help">Need Help?</a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted small">Copyright &copy; InstaGroup. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+
+<!-- Google Geocoding API and key -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0Z26oStJlYOC9H0aUIhqzbrU-gyAbNHc&signed_in=true&callback=initMap" async defer></script>
+
+
+</body>
+
+</html>
